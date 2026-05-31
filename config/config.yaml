@@ -1,0 +1,36 @@
+kafka:
+  broker: "localhost:9092"
+  topic: "crime_events"
+  producer_rate: 10  # rows per second
+
+storm:
+  window_size_minutes: 5
+  slide_interval_minutes: 1
+  anomaly_threshold: 10  # crimes per window per district
+  zookeeper_servers: ["localhost:2181"]
+
+spark:
+  master: "local[*]"  # local execution
+  app_name: "ChicagoCrimeBatchAnalytics"
+
+postgres:
+  host: "localhost"
+  port: 5432
+  database: "crime_db"
+  user: "postgres"
+  password: "password"
+  jdbc_url: "jdbc:postgresql://localhost:5432/crime_db"
+
+mongodb:
+  uri: "mongodb://localhost:27017"
+  database: "crime_analytics"
+  alert_collection: "alert_logs"
+  raw_events_collection: "raw_events"
+
+paths:
+  data_dir: "data"  # relative to project root
+  crime_csv: "Crimes_2001_to_Present.csv"
+  police_csv: "Police_Stations.csv"
+  arrests_csv: "Arrests.csv"
+  violence_csv: "Violence_Reduction.csv"
+  sex_offenders_csv: "Sex_Offenders.csv"

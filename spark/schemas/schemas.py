@@ -1,0 +1,145 @@
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType, BooleanType
+
+# ─── Crime Data (2001–Present) ───
+# Headers: ID,Case Number,Date,Block,IUCR,Primary Type,Description,
+#   Location Description,Arrest,Domestic,Beat,District,Ward,Community Area,
+#   FBI Code,X Coordinate,Y Coordinate,Year,Updated On,Latitude,Longitude,Location
+crime_schema = StructType([
+    StructField("ID", StringType(), True),
+    StructField("Case Number", StringType(), True),
+    StructField("Date", StringType(), True),
+    StructField("Block", StringType(), True),
+    StructField("IUCR", StringType(), True),
+    StructField("Primary Type", StringType(), True),
+    StructField("Description", StringType(), True),
+    StructField("Location Description", StringType(), True),
+    StructField("Arrest", StringType(), True),
+    StructField("Domestic", StringType(), True),
+    StructField("Beat", StringType(), True),
+    StructField("District", StringType(), True),
+    StructField("Ward", StringType(), True),
+    StructField("Community Area", StringType(), True),
+    StructField("FBI Code", StringType(), True),
+    StructField("X Coordinate", StringType(), True),
+    StructField("Y Coordinate", StringType(), True),
+    StructField("Year", IntegerType(), True),
+    StructField("Updated On", StringType(), True),
+    StructField("Latitude", DoubleType(), True),
+    StructField("Longitude", DoubleType(), True),
+    StructField("Location", StringType(), True)
+])
+
+# ─── Police Stations ───
+# Headers: DISTRICT,DISTRICT NAME,ADDRESS,CITY,STATE,ZIP,WEBSITE,PHONE,FAX,TTY,
+#   X COORDINATE,Y COORDINATE,LATITUDE,LONGITUDE,LOCATION
+police_station_schema = StructType([
+    StructField("DISTRICT", StringType(), True),
+    StructField("DISTRICT NAME", StringType(), True),
+    StructField("ADDRESS", StringType(), True),
+    StructField("CITY", StringType(), True),
+    StructField("STATE", StringType(), True),
+    StructField("ZIP", StringType(), True),
+    StructField("WEBSITE", StringType(), True),
+    StructField("PHONE", StringType(), True),
+    StructField("FAX", StringType(), True),
+    StructField("TTY", StringType(), True),
+    StructField("X COORDINATE", DoubleType(), True),
+    StructField("Y COORDINATE", DoubleType(), True),
+    StructField("LATITUDE", DoubleType(), True),
+    StructField("LONGITUDE", DoubleType(), True),
+    StructField("LOCATION", StringType(), True)
+])
+
+# ─── Arrests ───
+# Headers: CB_NO,CASE NUMBER,ARREST DATE,RACE,
+#   CHARGE 1 STATUTE..CLASS, CHARGE 2..4, CHARGES STATUTE..CLASS
+arrest_schema = StructType([
+    StructField("CB_NO", StringType(), True),
+    StructField("CASE NUMBER", StringType(), True),
+    StructField("ARREST DATE", StringType(), True),
+    StructField("RACE", StringType(), True),
+    StructField("CHARGE 1 STATUTE", StringType(), True),
+    StructField("CHARGE 1 DESCRIPTION", StringType(), True),
+    StructField("CHARGE 1 TYPE", StringType(), True),
+    StructField("CHARGE 1 CLASS", StringType(), True),
+    StructField("CHARGE 2 STATUTE", StringType(), True),
+    StructField("CHARGE 2 DESCRIPTION", StringType(), True),
+    StructField("CHARGE 2 TYPE", StringType(), True),
+    StructField("CHARGE 2 CLASS", StringType(), True),
+    StructField("CHARGE 3 STATUTE", StringType(), True),
+    StructField("CHARGE 3 DESCRIPTION", StringType(), True),
+    StructField("CHARGE 3 TYPE", StringType(), True),
+    StructField("CHARGE 3 CLASS", StringType(), True),
+    StructField("CHARGE 4 STATUTE", StringType(), True),
+    StructField("CHARGE 4 DESCRIPTION", StringType(), True),
+    StructField("CHARGE 4 TYPE", StringType(), True),
+    StructField("CHARGE 4 CLASS", StringType(), True),
+    StructField("CHARGES STATUTE", StringType(), True),
+    StructField("CHARGES DESCRIPTION", StringType(), True),
+    StructField("CHARGES TYPE", StringType(), True),
+    StructField("CHARGES CLASS", StringType(), True),
+])
+
+# ─── Violence Reduction ───
+# Headers: CASE_NUMBER,DATE,BLOCK,VICTIMIZATION_PRIMARY,INCIDENT_PRIMARY,
+#   GUNSHOT_INJURY_I,UNIQUE_ID,ZIP_CODE,WARD,COMMUNITY_AREA,
+#   STREET_OUTREACH_ORGANIZATION,AREA,DISTRICT,BEAT,AGE,SEX,RACE,
+#   VICTIMIZATION_FBI_CD,INCIDENT_FBI_CD,VICTIMIZATION_FBI_DESCR,INCIDENT_FBI_DESCR,
+#   VICTIMIZATION_IUCR_CD,INCIDENT_IUCR_CD,VICTIMIZATION_IUCR_SECONDARY,
+#   INCIDENT_IUCR_SECONDARY,HOMICIDE_VICTIM_FIRST_NAME,HOMICIDE_VICTIM_MI,
+#   HOMICIDE_VICTIM_LAST_NAME,MONTH,DAY_OF_WEEK,HOUR,LOCATION_DESCRIPTION,
+#   STATE_HOUSE_DISTRICT,STATE_SENATE_DISTRICT,UPDATED,LATITUDE,LONGITUDE,LOCATION
+violence_schema = StructType([
+    StructField("CASE_NUMBER", StringType(), True),
+    StructField("DATE", StringType(), True),
+    StructField("BLOCK", StringType(), True),
+    StructField("VICTIMIZATION_PRIMARY", StringType(), True),
+    StructField("INCIDENT_PRIMARY", StringType(), True),
+    StructField("GUNSHOT_INJURY_I", StringType(), True),
+    StructField("UNIQUE_ID", StringType(), True),
+    StructField("ZIP_CODE", StringType(), True),
+    StructField("WARD", StringType(), True),
+    StructField("COMMUNITY_AREA", StringType(), True),
+    StructField("STREET_OUTREACH_ORGANIZATION", StringType(), True),
+    StructField("AREA", StringType(), True),
+    StructField("DISTRICT", StringType(), True),
+    StructField("BEAT", StringType(), True),
+    StructField("AGE", StringType(), True),
+    StructField("SEX", StringType(), True),
+    StructField("RACE", StringType(), True),
+    StructField("VICTIMIZATION_FBI_CD", StringType(), True),
+    StructField("INCIDENT_FBI_CD", StringType(), True),
+    StructField("VICTIMIZATION_FBI_DESCR", StringType(), True),
+    StructField("INCIDENT_FBI_DESCR", StringType(), True),
+    StructField("VICTIMIZATION_IUCR_CD", StringType(), True),
+    StructField("INCIDENT_IUCR_CD", StringType(), True),
+    StructField("VICTIMIZATION_IUCR_SECONDARY", StringType(), True),
+    StructField("INCIDENT_IUCR_SECONDARY", StringType(), True),
+    StructField("HOMICIDE_VICTIM_FIRST_NAME", StringType(), True),
+    StructField("HOMICIDE_VICTIM_MI", StringType(), True),
+    StructField("HOMICIDE_VICTIM_LAST_NAME", StringType(), True),
+    StructField("MONTH", StringType(), True),
+    StructField("DAY_OF_WEEK", StringType(), True),
+    StructField("HOUR", StringType(), True),
+    StructField("LOCATION_DESCRIPTION", StringType(), True),
+    StructField("STATE_HOUSE_DISTRICT", StringType(), True),
+    StructField("STATE_SENATE_DISTRICT", StringType(), True),
+    StructField("UPDATED", StringType(), True),
+    StructField("LATITUDE", DoubleType(), True),
+    StructField("LONGITUDE", DoubleType(), True),
+    StructField("LOCATION", StringType(), True),
+])
+
+# ─── Sex Offenders ───
+# Headers: LAST,FIRST,BLOCK,GENDER,RACE,BIRTH DATE,HEIGHT,WEIGHT,VICTIM MINOR
+sex_offender_schema = StructType([
+    StructField("LAST", StringType(), True),
+    StructField("FIRST", StringType(), True),
+    StructField("BLOCK", StringType(), True),
+    StructField("GENDER", StringType(), True),
+    StructField("RACE", StringType(), True),
+    StructField("BIRTH DATE", StringType(), True),
+    StructField("HEIGHT", StringType(), True),
+    StructField("WEIGHT", StringType(), True),
+    StructField("VICTIM MINOR", StringType(), True),
+])
