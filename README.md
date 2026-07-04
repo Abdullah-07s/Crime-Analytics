@@ -2,8 +2,6 @@
 
 A full **Lambda Architecture** big data pipeline built on the **City of Chicago Public Safety dataset** (5.7 GB, 7M+ records). Combines Apache Spark batch processing, Kafka + Apache Storm real-time streaming, and a live Streamlit dashboard — all containerised with Docker Compose.
 
-> **Course:** Big Data Analytics (CS-4109) — FAST University NUCES, Spring 2026
-
 ---
 
 ## 🏗️ Architecture
@@ -246,14 +244,6 @@ AlertBolt     → persists to PostgreSQL + MongoDB
 - Crimes: 7M+ records, 25+ police districts, 2001–present
 - File size: ~5.7 GB
 - Source: [Chicago Data Portal](https://data.cityofchicago.org/)
-
----
-
-## 🎓 Course Info
-
-> **Course:** Big Data Analytics (CS-4109)
-> **University:** FAST University NUCES, Islamabad
-> **Semester:** Spring 2026 (Semester 8)
 
 ---
 
